@@ -37,7 +37,8 @@ app.use(errorMiddleware)
 // app.get('/', (req, res) => res.send('Home Page'));
 
 app.get('/', (req, res) => {
-  throw new Error('BROKEN') // Express will catch this on its own.
+  res.send('Home Page')
+  // throw new Error('BROKEN') 
 })
 
 //! Connect to MongoDB Atlas
