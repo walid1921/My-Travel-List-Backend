@@ -11,7 +11,7 @@ const errorMiddleware = require('./middleware/errorMiddleware');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const MONGO_URL = process.env.ATLAS_URL;
+const MONGO_URL = process.env.MONGO_URL;
 const FRONTEND = process.env.FRONTEND_URL
 
 
