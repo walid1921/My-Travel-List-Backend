@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 })
 
 //! Connect to MongoDB Atlas
-mongoose.connect(MONGO_URL).then(() => {
+mongoose.connect(`${MONGO_URL}`).then(() => {
   console.log('MongoDB Connected...')
   // Start the server
   app.listen(PORT, () => {
