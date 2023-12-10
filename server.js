@@ -28,6 +28,7 @@ const corsOptions = {
 
 //! middleware
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use('/api/items', itemRoute);
 app.use(errorMiddleware)
 
@@ -42,11 +43,14 @@ app.get('/', (req, res) => {
 })
 
 //! Connect to MongoDB Atlas
-mongoose.connect(`${MONGO_URL}`).then(() => {
-  console.log('MongoDB Connected...')
-  // Start the server
-  app.listen(PORT, () => {
-    console.log(`Server listening at http://localhost:${PORT}`);
-  
+mongoose.connect(MONGO_URL)
+  .then(() => {
+    console.log('MongoDB Connected...');
+    // Start the server
+    app.listen(PORT, () => {
+      console.log(`Server listening at http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });
-}).catch(err => {console.log(err)})
