@@ -1,7 +1,7 @@
 const express = require('express'); // npm i express
 require('dotenv').config(); // npm i dotenv
 const mongoose = require('mongoose'); // npm i mongoose
-const cors = require('cors') // npm i cors
+const cors = require('cors') // npm i cors (its for the cross origin resource sharing - to allow the frontend to access the backend data)
 
 const itemRoute = require('./routes/itemRoute'); 
 const errorMiddleware = require('./middleware/errorMiddleware');
@@ -12,7 +12,7 @@ const errorMiddleware = require('./middleware/errorMiddleware');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
-const FRONTEND = process.env.FRONTEND_URL
+const FRONTEND = process.env.FRONTEND_URL || 'http://localhost:5173'
 
 
 
