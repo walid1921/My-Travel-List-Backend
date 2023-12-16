@@ -1,6 +1,27 @@
 const Item = require('../models/itemModel');
 const asyncHandler = require('express-async-handler'); // npm i express-async-handler
 
+// const itemSchema = new mongoose.Schema(
+//   {
+//     description: {
+//       type: String,
+//       required: [true, 'Item description is required'],
+//     },
+//     quantity: {
+//       type: Number,
+//       required: [true, 'Item quantity is required']
+//     },
+//     packed: {
+//       type: Boolean,
+//       default: false
+//     },
+//     userId: {
+//       type: mongoose.Schema.Types.ObjectId,
+//       ref: 'User',
+//       required: true
+//     }
+  
+// })
 
 //! Get all items
 const getItems = asyncHandler(async(req, res) => {
@@ -27,7 +48,8 @@ const getItem = asyncHandler(async(req, res) => {
 //! Create an item
 const createItem = asyncHandler(async(req, res) => {
   try {
-    const newItem = await Item.create(req.body);
+    const userId = req.user._id
+    const newItem = await Item.create({...req.body, userId});
     res.status(200).json(newItem);
   } catch (err) {
     res.status(500);

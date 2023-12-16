@@ -4,7 +4,7 @@ const itemSchema = new mongoose.Schema(
   {
     description: {
       type: String,
-      required: [true, 'Item description is required']
+      required: [true, 'Item description is required'],
     },
     quantity: {
       type: Number,
@@ -13,6 +13,11 @@ const itemSchema = new mongoose.Schema(
     packed: {
       type: Boolean,
       default: false
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
     }
   
 })
